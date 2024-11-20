@@ -1,5 +1,18 @@
-version: '3'
+version: '3.8'
 services:
+  homeassistant:
+    container_name: homeassistant
+    image: ghcr.io/home-assistant/home-assistant:stable
+    privileged: true
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Prague
+    volumes:
+      - /opt/homeassistant/config:/config
+      - /opt/homeassistant/letsencrypt:/etc/letsencrypt:ro
+      - /run/dbus:/run/dbus:ro
+    network_mode: host
+
   matter-server:
     container_name: matter-server
     image: ghcr.io/home-assistant-libs/python-matter-server:stable
@@ -10,6 +23,7 @@ services:
       - /opt/homeassistant/matter/data:/data
       - /run/dbus:/run/dbus:ro
     network_mode: host
+
   # certbot:
   #   container_name: certbot
   #   image: ghcr.io/home-assistant-libs/python-matter-server:stable
