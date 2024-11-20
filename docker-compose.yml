@@ -31,8 +31,8 @@ services:
       volumes:
           - /opt/homeassistant/zigbee2mqtt/data:/app/data
           - /run/udev:/run/udev:ro
-      ports:
-          - 8080:8080
+      # ports:
+      #     - 8080:8080
       environment:
           - TZ=Europe/Prague
       devices:
