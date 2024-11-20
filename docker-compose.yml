@@ -37,6 +37,7 @@ services:
           - TZ=Europe/Prague
       devices:
           - /dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_32dd67206ee7ed11970f6d6262c613ac-if00-port0:/dev/ttyACM0
+      network_mode: host
 
 
   # certbot:
